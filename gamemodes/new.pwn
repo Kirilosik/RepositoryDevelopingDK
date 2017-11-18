@@ -363,8 +363,8 @@ public OnPlayerClickPlayer(playerid, clickedplayerid, source)
 {
 	return 1;
 }
-cmd:firstcmd(playerid) 
+CMD:first(playerid) 
 { 
     SendClientMessage(playerid,0x66CC33FF,"Всё успешно работает!");
-    return 1; 
+    return true; 
 } 
