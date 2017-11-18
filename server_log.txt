@@ -1,0 +1,247 @@
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.8-RC2, (C)2005-2017 SA-MP Team
+
+[18:18:57] filterscripts = ""  (string)
+[18:18:57] 
+[18:18:57] Server Plugins
+[18:18:57] --------------
+[18:18:57]  Loaded 0 plugins.
+
+[18:18:57] [artwork:crc] lvpdpc2.dff CRC = 0xFBD1EA7C
+[18:18:57] [artwork:crc] lvpdpc2.txd CRC = 0xDC92731E
+[18:18:57] [artwork:crc] lapdpd2.dff CRC = 0xA558D422
+[18:18:57] [artwork:crc] lapdpd2.txd CRC = 0xA442E2DA
+[18:18:57] [artwork:crc] wallzzz.dff CRC = 0x4BC6EDFF
+[18:18:57] [artwork:crc] wallzzz.txd CRC = 0x235E3EEB
+[18:18:57] 
+[18:18:57] Filterscripts
+[18:18:57] ---------------
+[18:18:57]   Loaded 0 filterscripts.
+
+[18:18:57] 
+----------------------------------
+[18:18:57]  Blank Gamemode by your name here
+[18:18:57] ----------------------------------
+
+[18:18:57] Number of vehicle models: 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.8-RC2, (C)2005-2017 SA-MP Team
+
+[17:20:46] filterscripts = ""  (string)
+[17:20:46] 
+[17:20:46] Server Plugins
+[17:20:46] --------------
+[17:20:46]  Loaded 0 plugins.
+
+[17:20:46] 
+[17:20:46] Filterscripts
+[17:20:46] ---------------
+[17:20:46]   Loaded 0 filterscripts.
+
+[17:20:46] 
+----------------------------------
+[17:20:46]  Blank Gamemode by Davidosick and Kirilosik
+[17:20:46] ----------------------------------
+
+[17:20:46] Number of vehicle models: 0
+[17:21:10] [connection] incoming connection: 25.71.7.218:59350 id: 0
+[17:21:10] [join] David has joined the server (0:25.71.7.218)
+[17:21:52] [connection] incoming connection: 127.0.0.1:49771 id: 1
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.8-RC2, (C)2005-2017 SA-MP Team
+
+[17:24:28] filterscripts = ""  (string)
+[17:24:28] 
+[17:24:28] Server Plugins
+[17:24:28] --------------
+[17:24:28]  Loading plugin: pawncmd.dll
+[17:24:28] Pawn.CMD plugin v3.1.4 by urShadow loaded
+[17:24:28]   Loaded.
+[17:24:28]  Loaded 1 plugins.
+
+[17:24:28] 
+[17:24:28] Filterscripts
+[17:24:28] ---------------
+[17:24:28]   Loaded 0 filterscripts.
+
+[17:24:28] 
+----------------------------------
+[17:24:28]  Blank Gamemode by Davidosick and Kirilosik
+[17:24:28] ----------------------------------
+
+[17:24:28] Number of vehicle models: 0
+[17:24:29] [connection] incoming connection: 25.71.7.218:63999 id: 0
+[17:24:30] [join] David has joined the server (0:25.71.7.218)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.8-RC2, (C)2005-2017 SA-MP Team
+
+[17:49:37] filterscripts = ""  (string)
+[17:49:37] 
+[17:49:37] Server Plugins
+[17:49:37] --------------
+[17:49:37]  Loading plugin: pawncmd.dll
+[17:49:37] Pawn.CMD plugin v3.1.4 by urShadow loaded
+[17:49:37]   Loaded.
+[17:49:37]  Loaded 1 plugins.
+
+[17:49:38] 
+[17:49:38] Filterscripts
+[17:49:38] ---------------
+[17:49:38]   Loaded 0 filterscripts.
+
+[17:49:38] 
+----------------------------------
+[17:49:38]  Blank Gamemode by Davidosick and Kirilosik
+[17:49:38] ----------------------------------
+
+[17:49:38] Number of vehicle models: 0
+[17:50:16] [connection] incoming connection: 127.0.0.1:58838 id: 0
+[17:50:16] [join] Kirilosik has joined the server (0:127.0.0.1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.8-RC2, (C)2005-2017 SA-MP Team
+
+[17:51:22] filterscripts = ""  (string)
+[17:51:22] 
+[17:51:22] Server Plugins
+[17:51:22] --------------
+[17:51:22]  Loading plugin: pawncmd.dll
+[17:51:22] Pawn.CMD plugin v3.1.4 by urShadow loaded
+[17:51:22]   Loaded.
+[17:51:22]  Loaded 1 plugins.
+
+[17:51:22] 
+[17:51:22] Filterscripts
+[17:51:22] ---------------
+[17:51:22]   Loaded 0 filterscripts.
+
+[17:51:22] 
+----------------------------------
+[17:51:22]  Blank Gamemode by Davidosick and Kirilosik
+[17:51:22] ----------------------------------
+
+[17:51:22] Number of vehicle models: 0
+[17:51:46] [connection] incoming connection: 127.0.0.1:51512 id: 0
+[17:51:46] [join] Kirilosik has joined the server (0:127.0.0.1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.8-RC2, (C)2005-2017 SA-MP Team
+
+[17:53:03] filterscripts = ""  (string)
+[17:53:03] 
+[17:53:03] Server Plugins
+[17:53:03] --------------
+[17:53:03]  Loading plugin: pawncmd.dll
+[17:53:03] Pawn.CMD plugin v3.1.4 by urShadow loaded
+[17:53:03]   Loaded.
+[17:53:03]  Loaded 1 plugins.
+
+[17:53:03] 
+[17:53:03] Filterscripts
+[17:53:03] ---------------
+[17:53:03]   Loaded 0 filterscripts.
+
+[17:53:03] 
+----------------------------------
+[17:53:03]  Blank Gamemode by Davidosick and Kirilosik
+[17:53:03] ----------------------------------
+
+[17:53:03] Number of vehicle models: 0
+[17:53:11] [connection] incoming connection: 127.0.0.1:49532 id: 0
+[17:53:11] [join] Kirilosik has joined the server (0:127.0.0.1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.8-RC2, (C)2005-2017 SA-MP Team
+
+[17:55:56] filterscripts = ""  (string)
+[17:55:56] 
+[17:55:56] Server Plugins
+[17:55:56] --------------
+[17:55:56]  Loading plugin: pawncmd.dll
+[17:55:56] Pawn.CMD plugin v3.1.4 by urShadow loaded
+[17:55:56]   Loaded.
+[17:55:56]  Loaded 1 plugins.
+
+[17:55:56] 
+[17:55:56] Filterscripts
+[17:55:56] ---------------
+[17:55:56]   Loaded 0 filterscripts.
+
+[17:55:56] 
+----------------------------------
+[17:55:56]  Blank Gamemode by Davidosick and Kirilosik
+[17:55:56] ----------------------------------
+
+[17:55:56] Number of vehicle models: 0
+[17:56:06] [connection] incoming connection: 127.0.0.1:57068 id: 0
+[17:56:07] [join] Kirilosik has joined the server (0:127.0.0.1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.8-RC2, (C)2005-2017 SA-MP Team
+
+[17:59:48] filterscripts = ""  (string)
+[17:59:48] 
+[17:59:48] Server Plugins
+[17:59:48] --------------
+[17:59:48]  Loading plugin: pawncmd.dll
+[17:59:48] Pawn.CMD plugin v3.1.4 by urShadow loaded
+[17:59:48]   Loaded.
+[17:59:48]  Loaded 1 plugins.
+
+[17:59:48] 
+[17:59:48] Filterscripts
+[17:59:48] ---------------
+[17:59:48]   Loaded 0 filterscripts.
+
+[17:59:48] 
+----------------------------------
+[17:59:48]  Blank Gamemode by Davidosick and Kirilosik
+[17:59:48] ----------------------------------
+
+[17:59:48] Number of vehicle models: 0
+[18:00:04] [connection] incoming connection: 127.0.0.1:58961 id: 0
+[18:00:04] [join] Kirilosik has joined the server (0:127.0.0.1)
