@@ -27,12 +27,24 @@ public OnGameModeExit()
 
 public OnPlayerRequestClass(playerid, classid)
 {
+	TogglePlayerSpectating(playerid, true);
+	if(bool:GetPVarInt(playerid, "skip?") == true)
+	{
+		SetPVarInt(playerid, "skip?", false);
+		SetTimerEx("OnPlayerRequestClass", 100, false, "ii", playerid, classid);
+	}
+	else
+	{
+		TogglePlayerSpectating(playerid, false);
+		SpawnPlayer(playerid);
+	}
 	return 1;
 }
 
 public OnPlayerConnect(playerid)
 {
 	#include <playertextdraws>
+	SetPVarInt(playerid, "skip?", true);
 	return 1;
 }
 
