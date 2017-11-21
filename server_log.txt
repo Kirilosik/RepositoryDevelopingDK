@@ -245,3 +245,35 @@ v0.3.8-RC2, (C)2005-2017 SA-MP Team
 [17:59:48] Number of vehicle models: 0
 [18:00:04] [connection] incoming connection: 127.0.0.1:58961 id: 0
 [18:00:04] [join] Kirilosik has joined the server (0:127.0.0.1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.8-RC2, (C)2005-2017 SA-MP Team
+
+[06:57:31] filterscripts = ""  (string)
+[06:57:31] 
+[06:57:31] Server Plugins
+[06:57:31] --------------
+[06:57:31]  Loading plugin: pawncmd
+[06:57:31] Pawn.CMD plugin v3.1.4 by urShadow loaded
+[06:57:31]   Loaded.
+[06:57:31]  Loading plugin: mysql
+[06:57:32]  >> plugin.mysql: R41-4 successfully loaded.
+[06:57:32]   Loaded.
+[06:57:32]  Loaded 2 plugins.
+
+[06:57:32] 
+[06:57:32] Filterscripts
+[06:57:32] ---------------
+[06:57:32]   Loaded 0 filterscripts.
+
+[06:57:32] 
+----------------------------------
+[06:57:32]  Blank Gamemode by your name here
+[06:57:32] ----------------------------------
+
+[06:57:32] Number of vehicle models: 0
