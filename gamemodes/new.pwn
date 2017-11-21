@@ -44,12 +44,16 @@ public OnPlayerRequestClass(playerid, classid)
 public OnPlayerConnect(playerid)
 {
 	#include <playertextdraws>
+
+	for(new i; i < sizeof(reg); i++) PlayerTextDrawHide(playerid, reg[i]);
+
 	SetPVarInt(playerid, "skip?", true);
 	return 1;
 }
 
 public OnPlayerDisconnect(playerid, reason)
 {
+	for(new i; i < sizeof(reg); i++) PlayerTextDrawDestroy(playerid, reg[i]);
 	return 1;
 }
 
