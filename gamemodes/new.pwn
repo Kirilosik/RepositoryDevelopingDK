@@ -1,5 +1,9 @@
+//пожалуйста, не устраивай в моде скриллакс, как в комментариях, так и в самом коде
+
 #include <a_samp>
 #include <a_mysql>
+
+new PlayerText:reg[63];
 
 main()
 {
@@ -10,7 +14,7 @@ main()
 
 public OnGameModeInit()
 {
-	// Don't use these lines if it's a filterscript
+	
 	SetGameModeText("Blank Script");
 	AddPlayerClass(0, 1958.3783, 1343.1572, 15.3746, 269.1425, 0, 0, 0, 0, 0, 0);
 	return 1;
@@ -23,14 +27,12 @@ public OnGameModeExit()
 
 public OnPlayerRequestClass(playerid, classid)
 {
-	SetPlayerPos(playerid, 1958.3783, 1343.1572, 15.3746);
-	SetPlayerCameraPos(playerid, 1958.3783, 1343.1572, 15.3746);
-	SetPlayerCameraLookAt(playerid, 1958.3783, 1343.1572, 15.3746);
 	return 1;
 }
 
 public OnPlayerConnect(playerid)
 {
+	#include <playertextdraws>
 	return 1;
 }
 
@@ -66,11 +68,6 @@ public OnPlayerText(playerid, text[])
 
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-	if (strcmp("/mycommand", cmdtext, true, 10) == 0)
-	{
-		// Do something here
-		return 1;
-	}
 	return 0;
 }
 
