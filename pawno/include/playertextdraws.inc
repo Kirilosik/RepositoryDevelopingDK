@@ -334,7 +334,7 @@
 	PlayerTextDrawSetOutline(playerid,reg[29], 0);
 	PlayerTextDrawSetProportional(playerid,reg[29], 1);
 	PlayerTextDrawSetShadow(playerid,reg[29], 0);
-	PlayerTextDrawSetSelectable(playerid,reg[29], 1);
+	PlayerTextDrawSetSelectable(playerid,reg[29], 0);
 
 	reg[30] = CreatePlayerTextDraw(playerid,158.000000, 166.000000, ".");
 	PlayerTextDrawBackgroundColor(playerid,reg[30], 255);
@@ -363,7 +363,7 @@
 	PlayerTextDrawSetOutline(playerid,reg[32], 0);
 	PlayerTextDrawSetProportional(playerid,reg[32], 1);
 	PlayerTextDrawSetShadow(playerid,reg[32], 0);
-	PlayerTextDrawSetSelectable(playerid,reg[32], 1);
+	PlayerTextDrawSetSelectable(playerid,reg[32], 0);
 
 	reg[33] = CreatePlayerTextDraw(playerid,52.000000, 196.000000, "-");
 	PlayerTextDrawBackgroundColor(playerid,reg[33], 255);
