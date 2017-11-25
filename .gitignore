@@ -27,3 +27,8 @@
 # Executables
 *.out
 *.app
+*.log
+*.log
+*.log
+*.log
+server_log.txt
