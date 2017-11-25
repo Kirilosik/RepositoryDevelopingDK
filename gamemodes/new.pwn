@@ -1,5 +1,3 @@
-//пожалуйста, не устраивай в моде скриллакс (мусор), как в комментариях, так и в самом коде
-
 #include <a_samp>
 #include <a_mysql>
 
@@ -7,7 +5,7 @@
 #define gpvi GetPVarInt
 #define spvi SetPVarInt
 
-// если добавляешь цвет приставка l (например: lblue) означает - светлый синий; приставка d (напривер dred) означает - тёмный красный
+// приставка l означает - светлый; приставка d означает - тёмный;
 #define hexsc "{00B8FF}" //цвет сервера
 #define hexlblue "{00B8FF}"
 #define hexwhite "{FFFFFF}"
@@ -20,7 +18,10 @@
 #define gray 0xAEAEAEFF
 #define dred 0xBD0000FF
 
-//дефайны тд реги для удобства
+//
+#define KEY_AIM (128)
+
+//дефайны тд, реги для удобства
 #define b_exit reg[3]
 #define b_click_email reg[15]
 #define b_wrong_email reg[18]
@@ -42,6 +43,12 @@
 new PlayerText: reg[63];
 new MySQL: connect;
 
+//Выбор скина
+new SkinPed[MAX_PLAYERS];
+new SkinMan[5] = { 78,79,137,200,239 };
+new SkinGirl[3] = { 12,40,55 };
+//
+
 enum dialogs
 {
 	d_none,
@@ -56,6 +63,9 @@ enum player_variables
 {
 	nick[24],
 	sex,
+	skin,
+	fskin,
+	city,
 	bool: promocode,
 	//не забудь добавить обнуление
 }
@@ -237,7 +247,7 @@ public OnPlayerRequestClass(playerid, classid)
 	
 	scm(playerid, -1, "Добро пожаловать на !scsName");
 
-	spvi(playerid, "use_rq", true);
+	SetPVarInt(playerid, "use_rq", true);
 	return 1;
 }
 
@@ -250,13 +260,18 @@ public OnPlayerConnect(playerid)
 	for(new i; i < sizeof(reg); i++) PlayerTextDrawHide(playerid, reg[i]);
 
 	//обнуление переменных и PVARov
-	spvi(playerid, "skip?", true);
-	spvi(playerid, "logged", false);
+	SetPVarInt(playerid, "skip?", true);
+	SetPVarInt(playerid, "logged", false);
+	SetPVarInt(playerid, "SkinSelect", 0);
+	SetPVarInt(playerid, "CitySelect", 0);
 	SetPVarString(playerid, "reg_email", "no");
 	SetPVarString(playerid, "reg_pass", "no");
 	SetPVarString(playerid, "reg_referral", "no");
 	
 	pi[playerid][sex] = 0;
+	pi[playerid][skin] = 0;
+	pi[playerid][fskin] = 0;
+	pi[playerid][city] = 0;
 	pi[playerid][promocode] = false;
 	return 1;
 }
@@ -278,6 +293,9 @@ public OnPlayerSpawn(playerid)
 		TogglePlayerControllable(playerid, false);
 		return 1;
 	}
+	SetCameraBehindPlayer(playerid);
+	pi[playerid][skin] = GetPlayerSkin(playerid),SetPlayerSkin(playerid,GetPlayerSkin(playerid));
+	SetPlayerVirtualWorld(playerid, 0);
 	return 1;
 }
 
@@ -327,7 +345,20 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 		if( !strcmp(pass, "no", true) ||
 			!strcmp(email, "no", true) ||
 			!strcmp(referral, "no", true) ) return spd(playerid, d_none, DIALOG_STYLE_MSGBOX, "!scНезаполненные поля", "!whВы не прошли регистрацию полностью.\n\n!grayВозможно, Вы не заполнили какое-то поле\nили заполнили его неверно. У каждого поля\nдолжна стоять зелёная галочка.", "Далее", "");
-		
+		TogglePlayerControllable(playerid, false);
+        SetPlayerCameraPos(playerid, 2095.943115, 1295.631469, 11.299535);
+		SetPlayerCameraLookAt(playerid, 2095.938476, 1290.636596, 11.072217);
+		SetPlayerPos(playerid,2096.0435,1288.6414,10.8203);
+		SetPlayerFacingAngle(playerid, 10.0000);
+		SendClientMessage(playerid,0x3399FFFF,"[Регистрация] {FFFFFF}Используйте {FFD500}'ЛКМ' {FFFFFF}для выбора");
+		SendClientMessage(playerid,0x3399FFFF,"[Регистрация] {FFFFFF}Используйте {FFD500}'ПКМ' {FFFFFF}для подтверждения выбора");
+		if(pi[playerid][sex] == 0) SetPlayerSkin(playerid,SkinMan[0]);
+		if(pi[playerid][sex] == 1) SetPlayerSkin(playerid,SkinGirl[0]);
+		SetPlayerVirtualWorld(playerid,playerid+1000);
+		for(new i; i < sizeof(reg); i++) PlayerTextDrawHide(playerid, reg[i]);
+		CancelSelectTextDraw(playerid);
+		SetPVarInt(playerid,"SkinSelect",1);
+		SetPVarInt(playerid, "CitySelect", 0);
 	}
 	return 0;
 }
@@ -449,6 +480,71 @@ public OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid)
 
 public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
+	if(newkeys == KEY_AIM)
+	{
+		if(GetPVarInt(playerid,"SkinSelect") == 1)
+		{
+			pi[playerid][skin] = GetPlayerSkin(playerid);
+			SetPVarInt(playerid, "SkinSelect", 0);
+			SetPVarInt(playerid, "CitySelect", 1);
+			pi[playerid][city] = 1;
+			InterpolateCameraPos(playerid, 2501.114501, -1190.237792, 145.654510, 1511.131347, -943.566406, 75.941421, 7000);
+			InterpolateCameraLookAt(playerid, 2496.209960, -1190.189086, 144.683380, 1507.559814, -940.533813, 77.687103, 7000);
+			GameTextForPlayer(playerid,"~w~LOS - SANTOS",500,1);
+			return 1;
+		}
+		if(GetPVarInt(playerid,"CitySelect") == 1)
+		{
+			SpawnPlayer(playerid);
+			SetPVarInt(playerid, "CitySelect", 0);
+			return 1;
+		}
+	}
+	if(newkeys == KEY_FIRE)
+	{
+		if(GetPVarInt(playerid,"SkinSelect") == 1)
+		{
+			if(pi[playerid][sex] == 0)
+			{
+				SkinPed[playerid]++;
+				if(SkinPed[playerid] >= 5) SkinPed[playerid] = 0;
+				SetPlayerSkin(playerid,SkinMan[SkinPed[playerid]]);
+			}
+			if(pi[playerid][sex] == 1)
+			{
+				SkinPed[playerid]++;
+				if(SkinPed[playerid] >= 3) SkinPed[playerid] = 0;
+				SetPlayerSkin(playerid,SkinGirl[SkinPed[playerid]]);
+			}
+			return 1;
+		}
+		if(GetPVarInt(playerid,"CitySelect") == 1)
+		{
+			pi[playerid][city] += 1;
+			if(pi[playerid][city] == 4) { pi[playerid][city] = 0; return 1; }
+			if(pi[playerid][city] == 1)
+			{
+				InterpolateCameraPos(playerid, 2501.114501, -1190.237792, 145.654510, 1511.131347, -943.566406, 75.941421, 7000);
+				InterpolateCameraLookAt(playerid, 2496.209960, -1190.189086, 144.683380, 1507.559814, -940.533813, 77.687103, 7000);
+				GameTextForPlayer(playerid,"~w~LOS - SANTOS",500,1);
+				return 1;
+			}
+			if(pi[playerid][city] == 2)
+			{
+				InterpolateCameraPos(playerid, -1202.632934, -648.377380, 96.101669, -2904.323242, 270.076324, 66.433624, 7000);
+				InterpolateCameraLookAt(playerid, -1207.240722, -646.564514, 95.407310, -2900.385009, 272.982757, 65.412475, 7000);
+				GameTextForPlayer(playerid,"~w~SAN - FIERRO",500,1);
+				return 1;
+			}
+			if(pi[playerid][city] == 3)
+			{
+				InterpolateCameraPos(playerid, 2387.002929, 881.351684, 126.485420, 2170.798339, 2016.477050, 84.289588, 7000);
+				InterpolateCameraLookAt(playerid, 2382.450439, 883.156250, 125.476760, 2167.838623, 2012.909790, 82.414932, 7000);
+				GameTextForPlayer(playerid,"~w~LAS - VENTURAS",500,1);
+				return 1;
+			}
+		}
+	}
 	return 1;
 }
 
@@ -485,14 +581,14 @@ public OnVehicleStreamOut(vehicleid, forplayerid)
 stock spd(playerid, dialogid, style, caption[], info[], button1[], button2[])
 {
 	if(bool:gpvi(playerid, "UseDialog?") != false) return err(playerid, "Закройте открытое диалоговое окно");
-	spvi(playerid, "UseDialog?", true);
+	SetPVarInt(playerid, "UseDialog?", true);
 	ShowPlayerDialog(playerid, dialogid, style, findtag(caption), findtag(info), button1, button2);
 	return 1;
 }
 
 public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 {
-	spvi(playerid, "UseDialog?", false);
+	SetPVarInt(playerid, "UseDialog?", false);
 	switch(dialogid)
 	{
 		case d_off: // asd`
