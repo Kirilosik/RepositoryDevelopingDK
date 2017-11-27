@@ -67,7 +67,6 @@ enum player_variables
 	fskin,
 	city,
 	bool: promocode,
-	//не забудь добавить обнуление
 }
 new pi[MAX_PLAYERS][player_variables];
 
@@ -114,23 +113,11 @@ stock findtag(const oldstr[])
 
 stock scm(playerid, color, const message[])
 {
-	/*
-		Как добавить цвет:
-		лезь в дефайны цветов
-		там добавляй сразу и HEX (пример: {FF0000}) и RGBA (например: 0xFF0000FF)
-		лезь в stock findtag
-		ставь свой тег в if(strfind(newmes, "!твой тег", true) != -1)
-		везде ниже в коде ставь тоже свой тег
-		в strdel(newmes, strfind(newmes, "!твой тег", true), strfind(newmes, "!твой тег", true)+количество символов в теге учитывая ! (например в !gray - 5 символов)); 
-	
-		Пример использования таких тегов смотри в OnPlayerRequestClass где приветствие игрока
-	*/
 	return SendClientMessage(playerid, color, findtag(message));
 }
 
 stock err(playerid, const message[])
 {
-	//если делать в дефайне не работает format
 	new newmes[144];
 	strmid(newmes, message, 0, 144);
 	strins(newmes, "x !gray", 0);
@@ -230,9 +217,9 @@ public OnGameModeExit()
 public OnPlayerRequestClass(playerid, classid)
 {
 	TogglePlayerSpectating(playerid, true);
-	if(bool:GetPVarInt(playerid, "skip?") == true)
+	if(bool:gpvi(playerid, "skip?") == true)
 	{
-		SetPVarInt(playerid, "skip?", false);
+		spvi(playerid, "skip?", false);
 		SetTimerEx("OnPlayerRequestClass", 100, false, "ii", playerid, classid);
 	}
 	else
@@ -247,7 +234,7 @@ public OnPlayerRequestClass(playerid, classid)
 	
 	scm(playerid, -1, "Добро пожаловать на !scsName");
 
-	SetPVarInt(playerid, "use_rq", true);
+	spvi(playerid, "use_rq", true);
 	return 1;
 }
 
@@ -260,10 +247,9 @@ public OnPlayerConnect(playerid)
 	for(new i; i < sizeof(reg); i++) PlayerTextDrawHide(playerid, reg[i]);
 
 	//обнуление переменных и PVARov
-	SetPVarInt(playerid, "skip?", true);
-	SetPVarInt(playerid, "logged", false);
-	SetPVarInt(playerid, "SkinSelect", 0);
-	SetPVarInt(playerid, "CitySelect", 0);
+	spvi(playerid, "skip?", true);
+	spvi(playerid, "logged", false);
+	spvi(playerid, "SkinSelect", 0);
 	SetPVarString(playerid, "reg_email", "no");
 	SetPVarString(playerid, "reg_pass", "no");
 	SetPVarString(playerid, "reg_referral", "no");
@@ -357,8 +343,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
 		SetPlayerVirtualWorld(playerid,playerid+1000);
 		for(new i; i < sizeof(reg); i++) PlayerTextDrawHide(playerid, reg[i]);
 		CancelSelectTextDraw(playerid);
-		SetPVarInt(playerid,"SkinSelect",1);
-		SetPVarInt(playerid, "CitySelect", 0);
+		spvi(playerid,"SkinSelect",1);
 	}
 	return 0;
 }
@@ -482,27 +467,25 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
 	if(newkeys == KEY_AIM)
 	{
-		if(GetPVarInt(playerid,"SkinSelect") == 1)
+		if(pi[playerid][city] == 0)
 		{
 			pi[playerid][skin] = GetPlayerSkin(playerid);
-			SetPVarInt(playerid, "SkinSelect", 0);
-			SetPVarInt(playerid, "CitySelect", 1);
+			spvi(playerid, "SkinSelect", 0);
 			pi[playerid][city] = 1;
 			InterpolateCameraPos(playerid, 2501.114501, -1190.237792, 145.654510, 1511.131347, -943.566406, 75.941421, 7000);
 			InterpolateCameraLookAt(playerid, 2496.209960, -1190.189086, 144.683380, 1507.559814, -940.533813, 77.687103, 7000);
 			GameTextForPlayer(playerid,"~w~LOS - SANTOS",500,1);
 			return 1;
 		}
-		if(GetPVarInt(playerid,"CitySelect") == 1)
+		if(pi[playerid][city] >= 1)
 		{
 			SpawnPlayer(playerid);
-			SetPVarInt(playerid, "CitySelect", 0);
 			return 1;
 		}
 	}
 	if(newkeys == KEY_FIRE)
 	{
-		if(GetPVarInt(playerid,"SkinSelect") == 1)
+		if(gpvi(playerid,"SkinSelect") == 1)
 		{
 			if(pi[playerid][sex] == 0)
 			{
@@ -518,7 +501,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			}
 			return 1;
 		}
-		if(GetPVarInt(playerid,"CitySelect") == 1)
+		if(pi[playerid][city] >= 1)
 		{
 			pi[playerid][city] += 1;
 			if(pi[playerid][city] == 4) { pi[playerid][city] = 0; return 1; }
@@ -581,14 +564,14 @@ public OnVehicleStreamOut(vehicleid, forplayerid)
 stock spd(playerid, dialogid, style, caption[], info[], button1[], button2[])
 {
 	if(bool:gpvi(playerid, "UseDialog?") != false) return err(playerid, "Закройте открытое диалоговое окно");
-	SetPVarInt(playerid, "UseDialog?", true);
+	spvi(playerid, "UseDialog?", true);
 	ShowPlayerDialog(playerid, dialogid, style, findtag(caption), findtag(info), button1, button2);
 	return 1;
 }
 
 public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 {
-	SetPVarInt(playerid, "UseDialog?", false);
+	spvi(playerid, "UseDialog?", false);
 	switch(dialogid)
 	{
 		case d_off: // asd`
